@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class Dashboard {
+public class Dashboard extends BaseController {
 
     private final DeviceRepository deviceRepository;
 
@@ -17,10 +17,10 @@ public class Dashboard {
 
     @RequestMapping("/")
     public String dashboard(Model model) {
-
         Device[] devices = deviceRepository.getAll();
 
         model.addAttribute("devices", devices);
+        model.addAttribute("appTitle", appTitle);
 
         return "dashboard";
     }
