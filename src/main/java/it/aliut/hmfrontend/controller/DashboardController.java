@@ -7,11 +7,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class Dashboard extends BaseController {
+public class DashboardController extends BaseController {
 
     private final DeviceRepository deviceRepository;
 
-    public Dashboard(DeviceRepository deviceRepository) {
+    public DashboardController(DeviceRepository deviceRepository) {
         this.deviceRepository = deviceRepository;
     }
 
