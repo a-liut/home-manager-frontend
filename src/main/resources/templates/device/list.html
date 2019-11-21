@@ -8,7 +8,6 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
 </head>
 
 <body>
@@ -16,30 +15,33 @@
 <div th:replace="base/header :: header(${appTitle})"></div>
 
 <main role="main" class="container mt-5">
-
     <div class="row">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">
-                    <span th:text="|Registered devices (${devices.length})|"></span>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col">
-                            <ol>
-                                <li th:each="device : ${devices}" th:text="${device}"></li>
-                            </ol>
-                        </div>
+        <div class="col-md">
+            <div class="accordion" id="devicesAccordion">
+                <div class="card" th:each="d,iter : ${devices}">
+                    <div class="card-header" th:id="'heading'+${iter.index}">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link" type="button" data-toggle="collapse"
+                                    th:data-target="'#collapse'+${iter.index}"
+                                    aria-expanded="false"
+                                    th:aria-controls="'collapse'+${iter.index}"
+                                    th:text="${d.name}">
+                                Device name
+                            </button>
+                        </h2>
                     </div>
-                    <div class="row">
-                        <div class="col text-center">
-                            <a class="btn btn-link m-auto" th:text="'See all devices...'"
-                               th:href="@{/devices}">Devices</a>
+                    <div th:id="'collapse'+${iter.index}" class="collapse" th:aria-labelledby="'heading'+${iter.index}"
+                         data-parent="#devicesAccordion">
+                        <div class="card-body">
+                            <ul>
+                                <li th:text="|Address: ${d.address}|"></li>
+                                <li th:text="|Online: ${d.online}|"></li>
+                                <li th:text="'Heartbeat URL: '+(${d.heartbeatUrl} ? ${d.heartbeatUrl} : ${'Not set'})"></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 
