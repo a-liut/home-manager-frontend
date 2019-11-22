@@ -27,8 +27,8 @@ public class DeviceService {
 
     public Device[] getAllDevices() {
         URI uri = getUriBuilder()
-                .path("/{devicesPath}")
-                .buildAndExpand("devices")
+                .path("/devices")
+                .build()
                 .toUri();
 
         return restTemplate.getForObject(uri, Device[].class);
@@ -37,8 +37,8 @@ public class DeviceService {
 
     public Device getById(String id) {
         URI uri = getUriBuilder()
-                .path("/{devicesPath}/{deviceId}")
-                .buildAndExpand("devices", id)
+                .path("/devices/{deviceId}")
+                .buildAndExpand(id)
                 .toUri();
 
         try {
@@ -55,9 +55,10 @@ public class DeviceService {
     public DeviceData[] getAllDataForDevice(Device device) {
         if (device == null) throw new IllegalArgumentException("Invalid device");
 
-        URI uri = getUriBuilder()
-                .path("/{devicesPath}/{deviceId}/{dataPath}")
-                .buildAndExpand("devices", device.getId(), "data")
+        UriComponentsBuilder builder = getUriBuilder()
+                .path("/devices/{deviceId}/data");
+
+        URI uri = builder.buildAndExpand(device.getId())
                 .toUri();
 
         try {
