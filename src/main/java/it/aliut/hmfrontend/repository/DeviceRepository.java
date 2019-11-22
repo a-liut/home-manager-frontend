@@ -5,7 +5,7 @@ import it.aliut.hmfrontend.service.DeviceService;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class DeviceRepository {
+public class DeviceRepository implements IRepository<String, Device> {
 
     private final DeviceService deviceService;
 
@@ -15,6 +15,10 @@ public class DeviceRepository {
 
     public Device[] getAll() {
         return deviceService.getAllDevices();
+    }
+
+    public Device getById(String id) {
+        return deviceService.getById(id);
     }
 
 }

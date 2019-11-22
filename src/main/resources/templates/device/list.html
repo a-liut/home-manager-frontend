@@ -33,11 +33,20 @@
                     <div th:id="'collapse'+${iter.index}" class="collapse" th:aria-labelledby="'heading'+${iter.index}"
                          data-parent="#devicesAccordion">
                         <div class="card-body">
-                            <ul>
-                                <li th:text="|Address: ${d.address}|"></li>
-                                <li th:text="|Online: ${d.online}|"></li>
-                                <li th:text="'Heartbeat URL: '+(${d.heartbeatUrl} ? ${d.heartbeatUrl} : ${'Not set'})"></li>
-                            </ul>
+                            <div class="row">
+                                <div class="col">
+                                    <ul>
+                                        <li th:text="|Address: ${d.address}|"></li>
+                                        <li th:text="|Online: ${d.online}|"></li>
+                                        <li th:text="'Heartbeat URL: '+(${d.heartbeatUrl} ? ${d.heartbeatUrl} : ${'Not set'})"></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <a class="btn btn-secondary" th:href="@{/devices/}+${d.id}" th:text="'Details'">Details</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
