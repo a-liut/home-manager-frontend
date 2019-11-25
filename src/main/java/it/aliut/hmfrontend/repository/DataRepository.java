@@ -5,6 +5,9 @@ import it.aliut.hmfrontend.entity.DeviceData;
 import it.aliut.hmfrontend.service.DeviceService;
 import org.springframework.stereotype.Repository;
 
+/**
+ * Repository for {@link DeviceData} objects.
+ */
 @Repository
 public class DataRepository implements IRepository<String, DeviceData> {
 

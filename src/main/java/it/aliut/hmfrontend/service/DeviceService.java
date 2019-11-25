@@ -13,6 +13,9 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
 
+/**
+ * Fetches {@link Device} and {@link DeviceData} information.
+ */
 @Service
 public class DeviceService {
 
@@ -25,6 +28,11 @@ public class DeviceService {
         this.baseUrl = baseUrl;
     }
 
+    /**
+     * Fetches all registered devices.
+     *
+     * @return An array containing fetched devices.
+     */
     public Device[] getAllDevices() {
         URI uri = getUriBuilder()
                 .path("/devices")
@@ -35,6 +43,12 @@ public class DeviceService {
     }
 
 
+    /**
+     * Fetches a single {@link Device} by its ID.
+     *
+     * @param id The id to be used.
+     * @return The {@link Device} object.
+     */
     public Device getById(String id) {
         URI uri = getUriBuilder()
                 .path("/devices/{deviceId}")
@@ -52,6 +66,12 @@ public class DeviceService {
         }
     }
 
+    /**
+     * Fetches all {@link DeviceData} publisher by the device.
+     *
+     * @param device The {@link Device} considered.
+     * @return An array containing {@link DeviceData} objects.
+     */
     public DeviceData[] getAllDataForDevice(Device device) {
         if (device == null) throw new IllegalArgumentException("Invalid device");
 
@@ -72,6 +92,11 @@ public class DeviceService {
         }
     }
 
+    /**
+     * Returns a {@link UriComponentsBuilder} initialized with the service base URL.
+     *
+     * @return The {@link UriComponentsBuilder} object.
+     */
     private UriComponentsBuilder getUriBuilder() {
         return UriComponentsBuilder.fromHttpUrl(baseUrl);
     }

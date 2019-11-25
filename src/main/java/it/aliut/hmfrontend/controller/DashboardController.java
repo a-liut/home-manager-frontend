@@ -6,6 +6,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+/**
+ * {@link Controller} for dashboard page.
+ */
 @Controller
 public class DashboardController extends BaseController {
 

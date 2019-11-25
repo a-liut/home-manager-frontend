@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 
+/**
+ * {@link Controller} for exposing information about devices.
+ */
 @Controller
 @RequestMapping("/devices")
 public class DeviceController extends BaseController {

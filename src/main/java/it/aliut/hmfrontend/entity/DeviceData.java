@@ -6,6 +6,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import java.util.Date;
 
+/**
+ * A single value produced by a {@link Device}.
+ */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
         "_id",
