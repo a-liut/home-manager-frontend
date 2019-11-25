@@ -5,6 +5,7 @@ import it.aliut.hmfrontend.repository.DeviceRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * {@link Controller} for dashboard page.
@@ -18,7 +19,7 @@ public class DashboardController extends BaseController {
         this.deviceRepository = deviceRepository;
     }
 
-    @RequestMapping("/")
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public String dashboard(Model model) {
         Device[] devices = deviceRepository.getAll();
 
