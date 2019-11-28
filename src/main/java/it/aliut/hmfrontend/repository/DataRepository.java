@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
  * Repository for {@link DeviceData} objects.
  */
 @Repository
-public class DataRepository implements IRepository<String, DeviceData> {
+public class DataRepository implements IDataRepository {
 
     private final IDeviceService deviceService;
 
@@ -27,6 +27,7 @@ public class DataRepository implements IRepository<String, DeviceData> {
         throw new UnsupportedOperationException();
     }
 
+    @Override
     public DeviceData[] getForDevice(Device device) {
         return deviceService.getAllDataForDevice(device);
     }

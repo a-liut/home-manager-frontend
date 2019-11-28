@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
  * Repository for {@link Device} objects.
  */
 @Repository
-public class DeviceRepository implements IRepository<String, Device> {
+public class DeviceRepository implements IDeviceRepository {
 
     private final IDeviceService deviceService;
 
@@ -16,10 +16,12 @@ public class DeviceRepository implements IRepository<String, Device> {
         this.deviceService = deviceService;
     }
 
+    @Override
     public Device[] getAll() {
         return deviceService.getAllDevices();
     }
 
+    @Override
     public Device getById(String id) {
         return deviceService.getById(id);
     }

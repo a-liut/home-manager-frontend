@@ -1,7 +1,7 @@
 package it.aliut.hmfrontend.controller;
 
 import it.aliut.hmfrontend.entity.Device;
-import it.aliut.hmfrontend.repository.DeviceRepository;
+import it.aliut.hmfrontend.repository.IDeviceRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class DashboardController extends BaseController {
 
-    private final DeviceRepository deviceRepository;
+    private final IDeviceRepository deviceRepository;
 
-    public DashboardController(DeviceRepository deviceRepository) {
+    public DashboardController(IDeviceRepository deviceRepository) {
         this.deviceRepository = deviceRepository;
     }
 
