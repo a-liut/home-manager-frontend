@@ -17,7 +17,7 @@ import java.net.URI;
  * Fetches {@link Device} and {@link DeviceData} information.
  */
 @Service
-public class DeviceService {
+public class DeviceService implements IDeviceService {
 
     private final String baseUrl;
 
