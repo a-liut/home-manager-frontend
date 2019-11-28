@@ -1,7 +1,7 @@
 package it.aliut.hmfrontend.repository;
 
 import it.aliut.hmfrontend.entity.Device;
-import it.aliut.hmfrontend.service.DeviceService;
+import it.aliut.hmfrontend.service.IDeviceService;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -10,9 +10,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class DeviceRepository implements IRepository<String, Device> {
 
-    private final DeviceService deviceService;
+    private final IDeviceService deviceService;
 
-    public DeviceRepository(DeviceService deviceService) {
+    public DeviceRepository(IDeviceService deviceService) {
         this.deviceService = deviceService;
     }
 
