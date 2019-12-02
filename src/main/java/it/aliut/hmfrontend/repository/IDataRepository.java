@@ -4,6 +4,5 @@ import it.aliut.hmfrontend.entity.Device;
 import it.aliut.hmfrontend.entity.DeviceData;
 
 public interface IDataRepository extends IRepository<String, DeviceData> {
-
-    DeviceData[] getForDevice(Device device);
+    DeviceData[] getAllDataForDevice(Device device);
 }

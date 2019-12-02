@@ -2,8 +2,8 @@ package it.aliut.hmfrontend.controller;
 
 import it.aliut.hmfrontend.entity.Device;
 import it.aliut.hmfrontend.entity.DeviceData;
-import it.aliut.hmfrontend.repository.IDataRepository;
-import it.aliut.hmfrontend.repository.IDeviceRepository;
+import it.aliut.hmfrontend.service.IDataService;
+import it.aliut.hmfrontend.service.IDeviceService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,18 +18,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/devices")
 public class DeviceController extends BaseController {
 
-    private final IDeviceRepository deviceRepository;
+    private final IDeviceService deviceService;
 
-    private final IDataRepository dataRepository;
+    private final IDataService dataService;
 
-    public DeviceController(IDeviceRepository deviceRepository, IDataRepository dataRepository) {
-        this.deviceRepository = deviceRepository;
-        this.dataRepository = dataRepository;
+    public DeviceController(IDeviceService deviceService, IDataService dataService) {
+        this.deviceService = deviceService;
+        this.dataService = dataService;
     }
 
     @RequestMapping(method = RequestMethod.GET)
     public String devicesList(Model model) {
-        Device[] devices = deviceRepository.getAll();
+        Device[] devices = deviceService.getAll();
 
         model.addAttribute("devices", devices);
         model.addAttribute("appTitle", appTitle);
@@ -39,9 +39,9 @@ public class DeviceController extends BaseController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public String device(@PathVariable("id") String id, Model model) {
-        Device device = deviceRepository.getById(id);
+        Device device = deviceService.getById(id);
 
-        DeviceData[] data = dataRepository.getForDevice(device);
+        DeviceData[] data = dataService.getForDevice(device);
 
         model.addAttribute("device", device);
         model.addAttribute("data", data);
