@@ -1,18 +1,7 @@
 <!DOCTYPE HTML>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <title th:text="${appTitle}"></title>
-
-    <link rel='stylesheet' th:href='@{/webjars/bootstrap/css/bootstrap.min.css}'>
-
-</head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base/base :: layout('Devices', ~{::main})}">
 
 <body>
-
-<div th:replace="base/header :: header(${appTitle})"></div>
 
 <main role="main" class="container mt-5">
     <div class="row">
@@ -56,10 +45,6 @@
 
 </main>
 <!-- /.container -->
-
-<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
-<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
-<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 
 </body>
 </html>

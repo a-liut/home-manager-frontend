@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html th:fragment="layout (titleText, content)" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="base/common :: head(~{::title},~{})">
+
+    <title th:text="${appTitle}+' - '+${titleText}"></title>
+
+</head>
+<body>
+<div th:replace="base/common :: header(${appTitle})"></div>
+
+<div th:replace="${content}">
+    <p>Layout content</p>
+</div>
+
+</body>
+</html>
