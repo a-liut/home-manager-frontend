@@ -6,7 +6,7 @@ import it.aliut.hmfrontend.repository.IDataRepository;
 import org.springframework.stereotype.Service;
 
 /**
- * Repository for {@link DeviceData} objects.
+ * Logic for managing {@link DeviceData} objects.
  */
 @Service
 public class DataService implements IDataService {

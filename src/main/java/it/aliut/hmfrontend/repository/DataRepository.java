@@ -13,6 +13,10 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
 
+
+/**
+ * Repository for {@link DeviceData} objects.
+ */
 @Repository
 public class DataRepository implements IDataRepository {
 

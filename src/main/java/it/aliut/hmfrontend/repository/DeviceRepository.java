@@ -1,7 +1,6 @@
 package it.aliut.hmfrontend.repository;
 
 import it.aliut.hmfrontend.entity.Device;
-import it.aliut.hmfrontend.entity.DeviceData;
 import it.aliut.hmfrontend.exception.DeviceNotFoundException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -14,7 +13,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.net.URI;
 
 /**
- * Fetches {@link Device} and {@link DeviceData} information.
+ * Repository for {@link Device} objects.
  */
 @Repository
 public class DeviceRepository implements IDeviceRepository {

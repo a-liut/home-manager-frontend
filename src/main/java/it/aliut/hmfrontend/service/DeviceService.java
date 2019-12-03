@@ -5,7 +5,7 @@ import it.aliut.hmfrontend.repository.IDeviceRepository;
 import org.springframework.stereotype.Service;
 
 /**
- * Repository for {@link Device} objects.
+ * Logic for managing {@link Device} objects.
  */
 @Service
 public class DeviceService implements IDeviceService {
