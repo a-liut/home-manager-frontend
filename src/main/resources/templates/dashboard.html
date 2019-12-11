@@ -6,7 +6,21 @@
 <main role="main" class="container mt-5">
     <div class="row">
         <div class="col-md-6">
-            <div class="card">
+            <div class="card" th:if="${devices == null}">
+                <div class="card-header">
+                    <span th:text="|Registered devices|"></span>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col text-center">
+                            <div class="alert alert-danger" role="alert" th:text="'Cannot fetch devices!'">
+                                Devices fetch error
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card" th:unless="${devices == null}">
                 <div class="card-header">
                     <span th:text="|Registered devices (${devices.length})|"></span>
                 </div>
@@ -28,7 +42,21 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div class="card">
+            <div class="card" th:if="${users == null}">
+                <div class="card-header">
+                    <span th:text="|Users|"></span>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col text-center">
+                            <div class="alert alert-danger" role="alert" th:text="'Cannot fetch users!'">
+                                Users fetch error
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card" th:unless="${users == null}">
                 <div class="card-header">
                     <span th:text="|Users (${users.length})|"></span>
                 </div>

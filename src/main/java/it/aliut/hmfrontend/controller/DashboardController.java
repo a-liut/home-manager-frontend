@@ -25,11 +25,22 @@ public class DashboardController extends BaseController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String dashboard(Model model) {
-        Device[] devices = deviceService.getAll();
-        User[] users = userService.getAll();
+        try {
+            Device[] devices = deviceService.getAll();
 
-        model.addAttribute("devices", devices);
-        model.addAttribute("users", users);
+            model.addAttribute("devices", devices);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        try {
+            User[] users = userService.getAll();
+
+            model.addAttribute("users", users);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
         model.addAttribute("appTitle", appTitle);
 
         return "dashboard";
