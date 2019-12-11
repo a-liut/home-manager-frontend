@@ -42,6 +42,11 @@ public class UserRepository implements IUserRepository {
         return restTemplate.getForObject(uri, User[].class);
     }
 
+    /**
+     * Return a specific users identified by its ID
+     *
+     * @return The requested {@link User} object.
+     */
     @Override
     public User getById(String id) {
         URI uri = getUriBuilder()
