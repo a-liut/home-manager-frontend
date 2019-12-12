@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base/base :: layout('User registration', ~{::main})}">
+
+<body>
+
+<main role="main" class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="mb-0 text-truncate" th:text="'Register a new Device'"></h3>
+                </div>
+                <div class="card-body">
+                    <form th:action="@{/users/register}" th:object="${command}" method="post">
+                        <div class="form-group">
+                            <label for="userName">Name</label>
+                            <input type="text" class="form-control" id="userName" aria-describedby="userNameHelp"
+                                   th:field="*{userName}">
+                            <small id="userNameHelp" class="form-text text-muted">Insert your name here.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="userEmail">Email address</label>
+                            <input type="email" class="form-control" id="userEmail" aria-describedby="emailHelp"
+                                   th:field="*{userEmail}">
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                                else.</small>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+<!-- /.container -->
+
+</body>
+</html>

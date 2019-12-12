@@ -59,6 +59,9 @@
             <div class="card" th:unless="${users == null}">
                 <div class="card-header">
                     <span th:text="|Users (${users.length})|"></span>
+                    <div class="btn-group  float-sm-right" role="group" aria-label="Basic example">
+                        <a class="btn btn-primary" th:text="'+'" th:href="@{/users/register}"></a>
+                    </div>
                 </div>
                 <div class="card-body">
                     <div class="row">
@@ -72,7 +75,7 @@
             </div>
         </div>
     </div>
-
+    <div class="alert alert-success" role="alert" th:if="${message}" th:text="${message}"></div>
 </main>
 <!-- /.container -->
 

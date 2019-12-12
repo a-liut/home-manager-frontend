@@ -4,7 +4,10 @@ import it.aliut.hmfrontend.entity.User;
 import it.aliut.hmfrontend.exception.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
@@ -72,5 +75,25 @@ public class UserRepository implements IUserRepository {
      */
     private UriComponentsBuilder getUriBuilder() {
         return UriComponentsBuilder.fromHttpUrl(baseUrl);
+    }
+
+    /**
+     * Register a new user.
+     *
+     * @param user The user to be added.
+     * @return The new {@link User} object.
+     */
+    @Override
+    public User add(User user) {
+        URI uri = getUriBuilder()
+                .path("/users")
+                .build()
+                .toUri();
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        HttpEntity<User> entity = new HttpEntity<>(user, headers);
+        return restTemplate.postForObject(uri, entity, User.class);
     }
 }
