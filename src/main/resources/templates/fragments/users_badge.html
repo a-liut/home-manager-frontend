@@ -16,12 +16,19 @@
 </div>
 <div class="card" th:unless="${users == null}">
     <div class="card-header">
-        <span th:text="|Users (${users.length})|"></span>
+        <span th:text="|Users (${#arrays.length(users)})|"></span>
         <div class="btn-group  float-sm-right" role="group" aria-label="Basic example">
             <a class="btn btn-primary" th:text="'+'" th:href="@{/users/register}"></a>
         </div>
     </div>
-    <div class="card-body">
+    <div class="card-body" th:if="${#arrays.length(users) == 0}">
+        <div class="row">
+            <div class="col text-center">
+                <p th:text="'No users found.'"></p>
+            </div>
+        </div>
+    </div>
+    <div class="card-body" th:unless="${#arrays.length(users) == 0}">
         <div class="row">
             <div class="col">
                 <ol>

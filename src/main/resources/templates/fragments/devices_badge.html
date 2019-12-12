@@ -16,9 +16,16 @@
 </div>
 <div class="card" th:unless="${devices == null}">
     <div class="card-header">
-        <span th:text="|Registered devices (${devices.length})|"></span>
+        <span th:text="|Registered devices (${#arrays.length(devices)})|"></span>
     </div>
-    <div class="card-body">
+    <div class="card-body" th:if="${#arrays.length(devices) == 0}">
+        <div class="row">
+            <div class="col text-center">
+                <p th:text="'No devices found.'"></p>
+            </div>
+        </div>
+    </div>
+    <div class="card-body" th:unless="${#arrays.length(devices) == 0}">
         <div class="row">
             <div class="col">
                 <ol>
