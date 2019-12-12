@@ -17,6 +17,12 @@ public class DataService implements IDataService {
         this.dataRepository = dataRepository;
     }
 
+    /**
+     * Returns al registered {@link DeviceData} for a {@link Device}
+     *
+     * @param device The device to get the data from.
+     * @return An array of {@link DeviceData} objects.
+     */
     @Override
     public DeviceData[] getForDevice(Device device) {
         return dataRepository.getAllDataForDevice(device);
