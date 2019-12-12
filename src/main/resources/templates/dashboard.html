@@ -42,37 +42,7 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div class="card" th:if="${users == null}">
-                <div class="card-header">
-                    <span th:text="|Users|"></span>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col text-center">
-                            <div class="alert alert-danger" role="alert" th:text="'Cannot fetch users!'">
-                                Users fetch error
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card" th:unless="${users == null}">
-                <div class="card-header">
-                    <span th:text="|Users (${users.length})|"></span>
-                    <div class="btn-group  float-sm-right" role="group" aria-label="Basic example">
-                        <a class="btn btn-primary" th:text="'+'" th:href="@{/users/register}"></a>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col">
-                            <ol>
-                                <li th:each="user : ${users}" th:text="${user.name}"></li>
-                            </ol>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div th:replace="fragments/users_badge :: layout(${users})"></div>
         </div>
     </div>
     <div class="alert alert-success" role="alert" th:if="${message}" th:text="${message}"></div>
