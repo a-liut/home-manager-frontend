@@ -31,12 +31,30 @@ public class DataRepository implements IDataRepository {
 
     @Override
     public DeviceData[] getAll() {
-        throw new UnsupportedOperationException();
+        URI uri = getUriBuilder()
+                .path("/data")
+                .build()
+                .toUri();
+
+        return restTemplate.getForObject(uri, DeviceData[].class);
     }
 
     @Override
     public DeviceData getById(String id) {
-        throw new UnsupportedOperationException();
+        URI uri = getUriBuilder()
+                .path("/data/{dataId}")
+                .buildAndExpand(id)
+                .toUri();
+
+        try {
+            return restTemplate.getForObject(uri, DeviceData.class);
+        } catch (HttpClientErrorException ex) {
+            if (ex.getStatusCode() == HttpStatus.NOT_FOUND) {
+                throw new DeviceNotFoundException(id);
+            }
+
+            throw ex;
+        }
     }
 
     /**
@@ -49,10 +67,10 @@ public class DataRepository implements IDataRepository {
     public DeviceData[] getAllDataForDevice(Device device) {
         if (device == null) throw new IllegalArgumentException("Invalid device");
 
-        UriComponentsBuilder builder = getUriBuilder()
-                .path("/devices/{deviceId}/data");
-
-        URI uri = builder.buildAndExpand(device.getId())
+        URI uri = getUriBuilder()
+                .path("/data")
+                .queryParam("device", device.getId())
+                .build()
                 .toUri();
 
         try {
