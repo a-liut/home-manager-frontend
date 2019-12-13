@@ -2,6 +2,7 @@ package it.aliut.hmfrontend.controller;
 
 import it.aliut.hmfrontend.command.RegisterUserCommand;
 import it.aliut.hmfrontend.data.RegisterUserData;
+import it.aliut.hmfrontend.entity.User;
 import it.aliut.hmfrontend.service.IUserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +24,17 @@ public class UserController extends BaseController {
 
     public UserController(IUserService userService) {
         this.userService = userService;
+    }
+
+    @RequestMapping(method = RequestMethod.GET)
+    public String list(Model model) {
+        model.addAttribute("appTitle", appTitle);
+
+        User[] list = userService.getAll();
+
+        model.addAttribute("users", list);
+
+        return "user/list";
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)

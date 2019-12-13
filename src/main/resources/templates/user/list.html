@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base/base :: layout('Users', ~{::main})}">
+
+<body>
+
+<main role="main" class="container mt-5">
+    <div class="row" th:if="${users != null}">
+        <div class="col-4">
+            <div class="card">
+                <div class="card-header">
+                    <span th:text="|Users|"></span>
+                </div>
+                <div class="card-body">
+                    <div class="list-group list-group-flush" id="list-tab" role="tablist">
+                        <a class="list-group-item list-group-item-action" th:id="'list-'+${iter.index}+'-list'"
+                           th:each="user, iter : ${users}" th:text="${user.name}" data-toggle="list"
+                           th:href="'#list-'+${iter.index}" role="tab" th:aria-controls="${iter.index}">User</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-8">
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade" th:id="'list-'+${iter.index}" th:each="user, iter : ${users}" role="tabpanel"
+                     th:aria-labelledby="'list-'+${iter.index}+'-list'">
+                    <div th:replace="fragments/user_details :: layout(${user})"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" th:unless="${users != null}">
+        <div class="col text-center">
+            <div class="alert alert-danger" role="alert" th:text="'Cannot fetch users!'">
+                Users fetch error
+            </div>
+        </div>
+    </div>
+</main>
+<!-- /.container -->
+
+</body>
+</html>
